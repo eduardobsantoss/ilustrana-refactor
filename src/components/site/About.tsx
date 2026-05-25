@@ -17,7 +17,7 @@ export function About() {
               className="h-full w-full object-cover"
             />
           </div>
-          <span className="sticker tilt-r absolute -bottom-3 -right-3 rounded-full bg-lemon px-3 py-1 font-hand text-lg text-ink">
+          <span className="sticker tilt-r absolute -bottom-3 -right-3 rounded-full bg-lemon px-3 py-1 font-display text-lg text-ink">
             oi, sou eu! ✿
           </span>
         </div>

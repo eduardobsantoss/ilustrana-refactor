@@ -1,4 +1,5 @@
 import { Heart, Sparkles, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function Hero() {
   return (
@@ -30,18 +31,18 @@ export function Hero() {
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
-          <a
-            href="#portfolio"
+          <Link
+            to="/portfolio"
             className="sticker inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-sans text-sm font-bold text-primary-foreground"
           >
             <Star className="h-4 w-4 fill-lemon text-ink" strokeWidth={2.5} /> ver portfólio
-          </a>
-          <a
-            href="#contato"
+          </Link>
+          <Link
+            to="/contato"
             className="sticker tilt-r inline-flex items-center gap-2 rounded-full bg-mint px-6 py-3 font-sans text-sm font-bold text-ink"
           >
             <Heart className="h-4 w-4 fill-rose text-ink" strokeWidth={2.5} /> bora trabalhar junto
-          </a>
+          </Link>
         </div>
       </div>
 

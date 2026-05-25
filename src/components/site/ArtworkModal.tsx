@@ -37,18 +37,44 @@ export function ArtworkModal({ artworks, openId, onClose, onNavigate }: Props) {
                             />
 
                             {artwork.processo.length > 1 && (
-                                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-background/90 px-3 py-2 shadow backdrop-blur">
-                                    {artwork.processo.map((p, i) => (
-                                        <button
-                                            key={i}
-                                            type="button"
-                                            onClick={() => setStep(i)}
-                                            aria-label={p.legenda}
-                                            className={`h-2.5 rounded-full transition-all ${i === step ? "w-8 bg-primary" : "w-2.5 bg-ink/25 hover:bg-ink/40"
-                                                }`}
-                                        />
-                                    ))}
-                                </div>
+                                <>
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setStep(
+                                                (step - 1 + artwork.processo.length) %
+                                                    artwork.processo.length,
+                                            )
+                                        }
+                                        aria-label="Etapa anterior"
+                                        className="absolute left-3 top-1/2 -translate-y-1/2 grid h-10 w-10 place-items-center rounded-full bg-background/90 text-ink shadow-md backdrop-blur transition-transform hover:scale-110 hover:text-primary md:left-5 md:h-12 md:w-12"
+                                    >
+                                        <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setStep((step + 1) % artwork.processo.length)
+                                        }
+                                        aria-label="Próxima etapa"
+                                        className="absolute right-3 top-1/2 -translate-y-1/2 grid h-10 w-10 place-items-center rounded-full bg-background/90 text-ink shadow-md backdrop-blur transition-transform hover:scale-110 hover:text-primary md:right-5 md:h-12 md:w-12"
+                                    >
+                                        <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
+                                    </button>
+
+                                    <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-background/90 px-3 py-2 shadow backdrop-blur">
+                                        {artwork.processo.map((p, i) => (
+                                            <button
+                                                key={i}
+                                                type="button"
+                                                onClick={() => setStep(i)}
+                                                aria-label={p.legenda}
+                                                className={`h-2.5 rounded-full transition-all ${i === step ? "w-8 bg-primary" : "w-2.5 bg-ink/25 hover:bg-ink/40"
+                                                    }`}
+                                            />
+                                        ))}
+                                    </div>
+                                </>
                             )}
                         </div>
 

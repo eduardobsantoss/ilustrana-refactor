@@ -28,7 +28,7 @@ export function BentoGallery() {
             cada obra tem uma <span className="text-primary">historinha</span>
           </h2>
         </div>
-        <p className="hidden max-w-sm font-hand text-lg leading-snug text-ink/70 md:block">
+        <p className="hidden max-w-sm font-display text-lg leading-snug text-ink/70 md:block">
           Passa o mouse pra ver o rabisco virar arte ✨ e clica pra conhecer o
           processo por trás de cada uma!
         </p>

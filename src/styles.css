@@ -24,7 +24,7 @@
   --radius-4xl: calc(var(--radius) + 16px);
 
   --font-display: "Morela", "Fredoka", "Caveat", cursive;
-  --font-hand: "Caveat", "Comic Sans MS", cursive;
+  --font-hand: "Morela", "Caveat", cursive;
   --font-sans: "Fredoka", "Poppins", ui-sans-serif, system-ui, sans-serif;
 
   --color-background: var(--background);
