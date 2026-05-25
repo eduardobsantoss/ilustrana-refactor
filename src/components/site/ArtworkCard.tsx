@@ -16,7 +16,7 @@ export function ArtworkCard({ artwork, className = "", onOpen }: Props) {
             type="button"
             onClick={onOpen}
             onTouchStart={() => setFlipped((v) => !v)}
-            className={`artwork-card group relative block w-full overflow-hidden rounded-3xl bg-card text-left shadow-sm ring-1 ring-border/60 transition-shadow hover:shadow-xl ${flipped ? "is-flipped" : ""
+            className={`artwork-card group relative block h-full w-full overflow-hidden rounded-3xl bg-card text-left shadow-sm ring-1 ring-border/60 transition-shadow hover:shadow-xl ${flipped ? "is-flipped" : ""
                 } ${className}`}
             aria-label={`Abrir detalhes de ${artwork.titulo}`}
         >

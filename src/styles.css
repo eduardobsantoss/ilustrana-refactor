@@ -2,139 +2,189 @@
 @source "../src";
 @import "tw-animate-css";
 
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+@font-face {
+  font-family: "Morela";
+  src: url("./assets/fonts/morela.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-    --radius-sm: calc(var(--radius) - 4px);
-    --radius-md: calc(var(--radius) - 2px);
-    --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) + 4px);
-    --radius-2xl: calc(var(--radius) + 8px);
-    --radius-3xl: calc(var(--radius) + 12px);
-    --radius-4xl: calc(var(--radius) + 16px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 
-    --font-display: "Morela", "Caveat", "Brush Script MT", cursive;
-    --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Morela", "Fredoka", "Caveat", cursive;
+  --font-hand: "Caveat", "Comic Sans MS", cursive;
+  --font-sans: "Fredoka", "Poppins", ui-sans-serif, system-ui, sans-serif;
 
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --color-card: var(--card);
-    --color-card-foreground: var(--card-foreground);
-    --color-popover: var(--popover);
-    --color-popover-foreground: var(--popover-foreground);
-    --color-primary: var(--primary);
-    --color-primary-foreground: var(--primary-foreground);
-    --color-secondary: var(--secondary);
-    --color-secondary-foreground: var(--secondary-foreground);
-    --color-muted: var(--muted);
-    --color-muted-foreground: var(--muted-foreground);
-    --color-accent: var(--accent);
-    --color-accent-foreground: var(--accent-foreground);
-    --color-destructive: var(--destructive);
-    --color-destructive-foreground: var(--destructive-foreground);
-    --color-border: var(--border);
-    --color-input: var(--input);
-    --color-ring: var(--ring);
-    --color-ring-offset-background: var(--background);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
 
-    --color-cream: var(--cream);
-    --color-blush: var(--blush);
-    --color-rose: var(--rose);
-    --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-blush: var(--blush);
+  --color-rose: var(--rose);
+  --color-ink: var(--ink);
+  --color-lemon: var(--lemon);
+  --color-mint: var(--mint);
+  --color-sky: var(--sky);
+  --color-lilac: var(--lilac);
 }
 
 :root {
-    --radius: 1rem;
+  --radius: 1.25rem;
 
-    /* Brand palette — Rosa atual refinado */
-    --cream: oklch(0.985 0.012 350);
-    /* #fff7fa */
-    --blush: oklch(0.92 0.045 350);
-    /* #ffd6e4 */
-    --rose: oklch(0.62 0.22 0);
-    /* #e91e7a */
-    --ink: oklch(0.24 0.035 340);
-    /* #2d1b2e */
+  /* Brand palette — Rosa atual refinado + acentos fofos */
+  --cream: oklch(0.985 0.012 350);
+  --blush: oklch(0.92 0.045 350);
+  --rose: oklch(0.66 0.22 0);
+  --ink: oklch(0.28 0.04 340);
 
-    --background: var(--cream);
-    --foreground: var(--ink);
-    --card: oklch(1 0 0);
-    --card-foreground: var(--ink);
-    --popover: oklch(1 0 0);
-    --popover-foreground: var(--ink);
-    --primary: var(--rose);
-    --primary-foreground: oklch(1 0 0);
-    --secondary: var(--blush);
-    --secondary-foreground: var(--ink);
-    --muted: oklch(0.96 0.015 350);
-    --muted-foreground: oklch(0.5 0.04 340);
-    --accent: var(--blush);
-    --accent-foreground: var(--ink);
-    --destructive: oklch(0.577 0.245 27.325);
-    --destructive-foreground: oklch(1 0 0);
-    --border: oklch(0.9 0.025 350);
-    --input: oklch(0.9 0.025 350);
-    --ring: var(--rose);
+  --lemon: oklch(0.94 0.12 95);   /* amarelinho */
+  --mint: oklch(0.9 0.09 165);    /* verdinho menta */
+  --sky: oklch(0.9 0.07 230);     /* azulzinho céu */
+  --lilac: oklch(0.88 0.07 305);  /* lilás */
+
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+  --primary: var(--rose);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: var(--blush);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.96 0.015 350);
+  --muted-foreground: oklch(0.5 0.04 340);
+  --accent: var(--lemon);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.88 0.03 350);
+  --input: oklch(0.88 0.03 350);
+  --ring: var(--rose);
 }
 
 .dark {
-    /* Reuse light values; portfolio is light by design */
-    --background: var(--cream);
-    --foreground: var(--ink);
+  --background: var(--cream);
+  --foreground: var(--ink);
 }
 
 @layer base {
-    * {
-        border-color: var(--color-border);
-    }
+  * {
+    border-color: var(--color-border);
+  }
 
-    html {
-        scroll-behavior: smooth;
-    }
+  html {
+    scroll-behavior: smooth;
+  }
 
-    body {
-        background-color: var(--color-background);
-        color: var(--color-foreground);
-        font-family: var(--font-sans);
-        -webkit-font-smoothing: antialiased;
-    }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 12% 8%, color-mix(in oklab, var(--lemon) 55%, transparent) 0, transparent 28%),
+      radial-gradient(circle at 90% 18%, color-mix(in oklab, var(--mint) 55%, transparent) 0, transparent 30%),
+      radial-gradient(circle at 80% 90%, color-mix(in oklab, var(--lilac) 55%, transparent) 0, transparent 32%),
+      radial-gradient(circle at 8% 85%, color-mix(in oklab, var(--sky) 55%, transparent) 0, transparent 30%);
+    background-attachment: fixed;
+  }
 
-    h1,
-    h2,
-    h3,
-    h4 {
-        font-family: var(--font-display);
-        font-weight: 400;
-        letter-spacing: -0.01em;
-    }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
 }
+
+/* ====== Estilo fofinho ====== */
+
+/* Borda "stickerizada" — sombra dura estilo neo-brutalist soft */
+.sticker {
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 0 var(--ink);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.sticker:hover {
+  transform: translate(-2px, -2px) rotate(-1deg);
+  box-shadow: 7px 7px 0 0 var(--ink);
+}
+.sticker:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 0 var(--ink);
+}
+
+.tilt-l { transform: rotate(-2deg); }
+.tilt-r { transform: rotate(2deg); }
+
+/* Wobble suave em loop pros doodles */
+@keyframes wobble {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+.animate-wobble { animation: wobble 4s ease-in-out infinite; }
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-floaty { animation: floaty 5s ease-in-out infinite; }
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 18s linear infinite; }
 
 /* Cross-fade entre rascunho e final */
 .artwork-card {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
-
 .artwork-card .artwork-final {
-    opacity: 0;
-    transition: opacity 600ms ease, transform 800ms ease;
+  opacity: 0;
+  transition: opacity 600ms ease, transform 800ms ease;
 }
-
 .artwork-card:hover .artwork-final,
 .artwork-card:focus-visible .artwork-final,
 .artwork-card.is-flipped .artwork-final {
-    opacity: 1;
-    transform: scale(1.03);
+  opacity: 1;
+  transform: scale(1.04);
 }
-
 .artwork-card .artwork-sketch {
-    transition: opacity 600ms ease;
+  transition: opacity 600ms ease;
 }
-
 .artwork-card:hover .artwork-sketch,
 .artwork-card:focus-visible .artwork-sketch,
 .artwork-card.is-flipped .artwork-sketch {
-    opacity: 0;
+  opacity: 0;
 }

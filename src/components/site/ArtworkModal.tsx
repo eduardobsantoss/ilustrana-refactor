@@ -4,30 +4,28 @@ import type { Artwork } from "@/lib/artworks";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type Props = {
-    artwork: Artwork | null;
-    currentIndex: number;
-    total: number;
+    artworks: Artwork[];
+    openId: string | null;
     onClose: () => void;
-    onNextArtwork: () => void;
-    onPreviousArtwork: () => void;
+    onNavigate: (id: string) => void;
 };
 
-export function ArtworkModal({
-    artwork,
-    currentIndex,
-    total,
-    onClose,
-    onNextArtwork,
-    onPreviousArtwork,
-}: Props) {
+export function ArtworkModal({ artworks, openId, onClose, onNavigate }: Props) {
+    const index = artworks.findIndex((a) => a.id === openId);
+    const artwork = index >= 0 ? artworks[index] : null;
     const [step, setStep] = useState(0);
 
     useEffect(() => {
         setStep(0);
-    }, [artwork?.id]);
+    }, [openId]);
+
+    const prev = () =>
+        artwork && onNavigate(artworks[(index - 1 + artworks.length) % artworks.length].id);
+    const next = () =>
+        artwork && onNavigate(artworks[(index + 1) % artworks.length].id);
 
     return (
-        <Dialog open={!!artwork} onOpenChange={(open) => !open && onClose()}>
+        <Dialog open={!!openId} onOpenChange={(open) => !open && onClose()}>
             <DialogContent className="grid max-h-[92vh] w-[min(1100px,95vw)] max-w-none gap-0 overflow-hidden rounded-3xl border-0 p-0 sm:max-w-none md:grid-cols-[1.2fr_1fr]">
                 {artwork && (
                     <>
@@ -83,22 +81,19 @@ export function ArtworkModal({
                                     </span>{" "}
                                     ({step + 1}/{artwork.processo.length})
                                 </p>
-                                <p className="text-xs text-ink/50">
-                                    Obra {currentIndex + 1} de {total}
-                                </p>
                             </div>
 
                             <div className="mt-auto flex items-center justify-between pt-8">
                                 <button
                                     type="button"
-                                    onClick={onPreviousArtwork}
+                                    onClick={prev}
                                     className="inline-flex items-center gap-1 rounded-full px-3 py-2 text-sm text-ink/70 transition-colors hover:bg-secondary hover:text-primary"
                                 >
                                     <ChevronLeft className="h-4 w-4" /> anterior
                                 </button>
                                 <button
                                     type="button"
-                                    onClick={onNextArtwork}
+                                    onClick={next}
                                     className="inline-flex items-center gap-1 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02]"
                                 >
                                     próxima obra <ChevronRight className="h-4 w-4" />

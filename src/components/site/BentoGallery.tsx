@@ -1,46 +1,56 @@
-import type { Artwork } from "@/lib/artworks";
+import { useState } from "react";
+import { artworks } from "@/lib/artworks";
 import { ArtworkCard } from "./ArtworkCard";
+import { ArtworkModal } from "./ArtworkModal";
 
+// Cada item recebe uma "receita" de span no bento, posições escolhidas a mão
+// para um ritmo visual interessante.
 const layoutClasses: Record<string, string> = {
-    "heroi-do-navio": "md:col-span-2 md:row-span-2 aspect-square",
-    "gatinho-feliz": "aspect-square",
-    "retrato-cachos": "md:row-span-2 aspect-[3/4] md:aspect-[3/5]",
-    "arvore-outono": "aspect-[3/4]",
-    "raposinha-floresta": "aspect-square",
-    "viagem-papel": "md:col-span-2 aspect-[5/4]",
+  "heroi-do-navio": "md:col-span-2 md:row-span-2",
+  "gatinho-feliz": "",
+  "retrato-cachos": "md:row-span-2",
+  "arvore-outono": "",
+  "raposinha-floresta": "",
+  "viagem-papel": "md:col-span-2",
 };
 
-type Props = {
-    artworks: Artwork[];
-    onOpen: (artworkId: string) => void;
-};
+export function BentoGallery() {
+  const [openId, setOpenId] = useState<string | null>(null);
 
-export function BentoGallery({ artworks, onOpen }: Props) {
-    return (
-        <section id="portfolio" className="mx-auto max-w-6xl px-5 py-12 md:py-20">
-            <div className="mb-8 flex items-end justify-between gap-6">
-                <div>
-                    <p className="font-display text-2xl text-primary">portfólio</p>
-                    <h2 className="mt-1 font-display text-4xl text-ink md:text-5xl">
-                        Cada obra tem uma história
-                    </h2>
-                </div>
-                <p className="hidden max-w-sm text-sm text-ink/60 md:block">
-                    Passe o mouse para ver o rascunho virar arte final. Clique em qualquer
-                    ilustração para conhecer o processo por trás dela.
-                </p>
-            </div>
+  return (
+    <section id="portfolio" className="mx-auto max-w-6xl px-5 py-12 md:py-20">
+      <div className="mb-8 flex items-end justify-between gap-6">
+        <div>
+          <span className="sticker tilt-l inline-flex items-center gap-2 rounded-full bg-sky px-4 py-1.5 font-sans text-sm font-semibold text-ink">
+            ✿ portfólio
+          </span>
+          <h2 className="mt-3 font-display text-4xl text-ink md:text-5xl">
+            cada obra tem uma <span className="text-primary">historinha</span>
+          </h2>
+        </div>
+        <p className="hidden max-w-sm font-hand text-lg leading-snug text-ink/70 md:block">
+          Passa o mouse pra ver o rabisco virar arte ✨ e clica pra conhecer o
+          processo por trás de cada uma!
+        </p>
+      </div>
 
-            <div className="grid auto-rows-[160px] grid-cols-2 gap-4 md:auto-rows-[200px] md:grid-cols-4 md:gap-5">
-                {artworks.map((a) => (
-                    <ArtworkCard
-                        key={a.id}
-                        artwork={a}
-                        className={layoutClasses[a.id] ?? "aspect-square"}
-                        onOpen={() => onOpen(a.id)}
-                    />
-                ))}
-            </div>
-        </section>
-    );
+      <div className="grid auto-rows-[160px] grid-cols-2 gap-4 md:auto-rows-[200px] md:grid-cols-4 md:gap-5">
+        {artworks.map((a) => (
+          <ArtworkCard
+            key={a.id}
+            artwork={a}
+            className={layoutClasses[a.id] ?? "aspect-square"}
+            onOpen={() => setOpenId(a.id)}
+          />
+        ))}
+      </div>
+
+      <ArtworkModal
+        artworks={artworks}
+        openId={openId}
+        onClose={() => setOpenId(null)}
+        onNavigate={setOpenId}
+      />
+    </section>
+  );
 }
