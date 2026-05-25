@@ -3,6 +3,7 @@ import { Sparkles } from "lucide-react";
 import { socials } from "@/lib/socials";
 
 const navItems = [
+    { to: "/", label: "início" },
     { to: "/portfolio", label: "portfólio" },
     { to: "/sobre", label: "sobre" },
     { to: "/contato", label: "contato" },
@@ -20,7 +21,7 @@ export function Header() {
                     <span className="font-display text-2xl leading-none text-ink/70">studio</span>
                 </Link>
 
-                <nav className="hidden items-center gap-7 font-sans text-sm font-semibold md:flex">
+                <nav className="hidden items-center gap-7 font-subtitle text-sm font-semibold md:flex">
                     {navItems.map(({ to, label }) => (
                         <NavLink
                             key={to}
