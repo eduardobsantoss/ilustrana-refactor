@@ -1,6 +1,32 @@
+# Dependencies
 node_modules
-.dist
+
+# Build output
+dist
+dist-ssr
+
+# TypeScript incremental build
+*.tsbuildinfo
+
+# Environment
 .env
 .env.*
+!.env.example
+
+# Editor / OS
 .DS_Store
-vite.svg
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vite cache
+.vite
